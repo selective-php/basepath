@@ -1,6 +1,6 @@
 # selective/basepath
 
-A URL base path detector for Slim 3 and 4.
+A URL base path detector for Slim 4.
 
 [![Latest Version on Packagist](https://img.shields.io/github/release/selective-php/basepath.svg?style=flat-square)](https://packagist.org/packages/selective/basepath)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
