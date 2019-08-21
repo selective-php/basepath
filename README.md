@@ -33,7 +33,9 @@ composer require selective/basepath
 ```
 
 For **Apache** we have to "redirect" the web traffic to the front controller
-in `public/index.php`. Create a file: `public/.htaccess` with this content:
+in `public/index.php`. 
+
+Create a file: `public/.htaccess` with this content:
 
 ```htaccess
 # Redirect to front controller
@@ -45,8 +47,9 @@ RewriteRule ^ index.php [QSA,L]
 ```
 
 We also need a rule to "redirect" the sub-directories to 
-the front-controller in `public/index.php`. Create a `.htaccess` 
-file above the `public/` directory with this content:
+the front-controller in `public/index.php`. 
+
+Create a `.htaccess` file above the `public/` directory with this content:
 
 ```htaccess
 RewriteEngine on
