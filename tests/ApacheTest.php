@@ -8,7 +8,7 @@ use Selective\BasePath\BasePathDetector;
 /**
  * Test.
  */
-class InternalServerTest extends TestCase
+class ApacheTest extends TestCase
 {
     /**
      * @var array
@@ -42,7 +42,7 @@ class InternalServerTest extends TestCase
      */
     private function createInstance(): BasePathDetector
     {
-        return new BasePathDetector($this->server, 'cli-server');
+        return new BasePathDetector($this->server, 'apache2handler');
     }
 
     /**
@@ -56,9 +56,16 @@ class InternalServerTest extends TestCase
         $basePath = $detector->getBasePath();
 
         static::assertSame('', $basePath);
+    }
 
-        $this->server['SCRIPT_NAME'] = '/index.php';
-        $detector = $this->createInstance();
+    /**
+     * Test.
+     *
+     * @return void
+     */
+    public function testUnknownServer(): void
+    {
+        $detector = new BasePathDetector($this->server, '');
         $basePath = $detector->getBasePath();
 
         static::assertSame('', $basePath);
@@ -71,11 +78,26 @@ class InternalServerTest extends TestCase
      */
     public function testSubdirectory(): void
     {
-        $this->server['SCRIPT_NAME'] = '/public/index.php';
+        $this->server['REQUEST_URI'] = '/public';
 
         $detector = $this->createInstance();
         $basePath = $detector->getBasePath();
 
         static::assertSame('/public', $basePath);
+    }
+
+    /**
+     * Test.
+     *
+     * @return void
+     */
+    public function testWithoutRequestUri(): void
+    {
+        unset($this->server['REQUEST_URI']);
+
+        $detector = $this->createInstance();
+        $basePath = $detector->getBasePath();
+
+        static::assertSame('', $basePath);
     }
 }

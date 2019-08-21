@@ -13,13 +13,20 @@ class BasePathDetector
     private $server = [];
 
     /**
+     * @var string The PHP_SAPI value
+     */
+    private $phpSapi = '';
+
+    /**
      * The constructor.
      *
      * @param array $server The SERVER data to use
+     * @param string $phpSapi The PHP_SAPI value
      */
-    public function __construct(array $server)
+    public function __construct(array $server, string $phpSapi)
     {
         $this->server = $server;
+        $this->phpSapi = $phpSapi;
     }
 
     /**
@@ -29,13 +36,17 @@ class BasePathDetector
      */
     public function getBasePath(): string
     {
+        // For apache
+        if ($this->phpSapi === 'apache2handler') {
+            return $this->getBasePathFromApache($this->server);
+        }
+
         // For built-in server
-        if (PHP_SAPI === 'cli-server') {
+        if ($this->phpSapi === 'cli-server') {
             return $this->getBasePathFromBuiltIn($this->server);
         }
 
-        // For apache
-        return $this->getBasePathFromApache($this->server);
+        return '';
     }
 
     /**

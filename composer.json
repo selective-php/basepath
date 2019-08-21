@@ -1,7 +1,7 @@
 {
     "name": "selective/basepath",
     "type": "library",
-    "description": "A URL base path detector for Slim 3 and 4",
+    "description": "A URL base path detector for Slim 4",
     "keywords": [
         "basepath",
         "slim",
