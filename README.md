@@ -86,6 +86,7 @@ $app = AppFactory::create();
 // Set the base path to run the app in a subdirectory.
 // This path is used in urlFor().
 $basePath = (new BasePathDetector($_SERVER))->getBasePath();
+$app->setBasePath($basePath);
 
 // Add middleware
 $app->addRoutingMiddleware();
