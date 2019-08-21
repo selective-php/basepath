@@ -21,12 +21,12 @@ class BasePathDetector
      * The constructor.
      *
      * @param array $server The SERVER data to use
-     * @param string $phpSapi The PHP_SAPI value
+     * @param string|null $phpSapi The PHP_SAPI value
      */
-    public function __construct(array $server, string $phpSapi)
+    public function __construct(array $server, string $phpSapi = null)
     {
         $this->server = $server;
-        $this->phpSapi = $phpSapi;
+        $this->phpSapi = $phpSapi ?? PHP_SAPI;
     }
 
     /**
