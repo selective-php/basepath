@@ -32,6 +32,15 @@ A URL base path detector for Slim 4.
 composer require selective/basepath
 ```
 
+The recommended **directory structure**: 
+
+* `public/`      Web server files, the [DocumentRoot](https://httpd.apache.org/docs/2.4/de/mod/core.html#documentroot)
+  * `.htaccess`   Apache redirect rules for the front controller
+  * `index.php`   The front controller
+* `.htaccess`    Internal redirect to the public/ directory
+
+The following steps are necessary for your Slim 4 application:
+
 For **Apache** we have to "redirect" the web traffic to the front controller
 in `public/index.php`. 
 
