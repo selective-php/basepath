@@ -10,7 +10,7 @@
     "homepage": "https://github.com/selective-php/basepath",
     "license": "MIT",
     "require": {
-        "php": "^7.2"
+        "php": "^7.1"
     },
     "require-dev": {
         "overtrue/phplint": "^1.1",
