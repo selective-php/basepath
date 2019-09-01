@@ -126,7 +126,7 @@ $twig->addGlobal('base_path', $routeParser->urlFor('root'));
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="utf-8">
         <base href="{{ base_path }}"/>
