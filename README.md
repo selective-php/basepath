@@ -111,16 +111,23 @@ $app->get('/', static function (Request $request, Response $response) {
 $app->run();
 ```
 
-Creating a url with a base path using the RouteParser:
+Creating a `relative` url with a base path using the RouteParser:
 
 ```php
 $routeParser = $app->getRouteCollector()->getRouteParser();
 echo $routeParser->urlFor('root');
 ```
 
-Passing the base path into all Twig templates:
+Passing the base path into all Twig templates using the `App` instance:
 
 ```php
+$environment->addGlobal('base_path', $app->getBasePath() . '/');
+```
+
+Passing the base path into all Twig templates using a route:
+
+```php
+$routeParser = $app->getRouteCollector()->getRouteParser();
 $twig->addGlobal('base_path', $routeParser->urlFor('root'));
 ```
 
@@ -135,6 +142,10 @@ $twig->addGlobal('base_path', $routeParser->urlFor('root'));
     </body>
 </html>
 ```
+
+## Middleware
+
+* TODO
 
 ## License
 
