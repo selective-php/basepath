@@ -131,6 +131,8 @@ $routeParser = $app->getRouteCollector()->getRouteParser();
 $twig->addGlobal('base_path', $routeParser->urlFor('root'));
 ```
 
+Twig template example:
+
 ```html
 <!DOCTYPE html>
 <html>
