@@ -118,10 +118,10 @@ $routeParser = $app->getRouteCollector()->getRouteParser();
 echo $routeParser->urlFor('root');
 ```
 
-Passing a global base url into all Twig templates:
+Passing the base path into all Twig templates:
 
 ```php
-$twig->addGlobal('base_url', $routeParser->urlFor('root'));
+$twig->addGlobal('base_url', $app->getBasePath() . '/');
 ```
 
 ## License
