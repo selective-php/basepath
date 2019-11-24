@@ -17,8 +17,6 @@ class InternalServerTest extends TestCase
 
     /**
      * Set Up.
-     *
-     * @return void
      */
     protected function setUp(): void
     {
@@ -47,8 +45,6 @@ class InternalServerTest extends TestCase
 
     /**
      * Test.
-     *
-     * @return void
      */
     public function testDefault(): void
     {
@@ -66,8 +62,6 @@ class InternalServerTest extends TestCase
 
     /**
      * Test.
-     *
-     * @return void
      */
     public function testSubdirectory(): void
     {

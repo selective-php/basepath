@@ -17,8 +17,6 @@ class ApacheTest extends TestCase
 
     /**
      * Set Up.
-     *
-     * @return void
      */
     protected function setUp(): void
     {
@@ -47,8 +45,6 @@ class ApacheTest extends TestCase
 
     /**
      * Test.
-     *
-     * @return void
      */
     public function testDefault(): void
     {
@@ -60,8 +56,6 @@ class ApacheTest extends TestCase
 
     /**
      * Test.
-     *
-     * @return void
      */
     public function testUnknownServer(): void
     {
@@ -73,8 +67,6 @@ class ApacheTest extends TestCase
 
     /**
      * Test.
-     *
-     * @return void
      */
     public function testSubdirectory(): void
     {
@@ -88,8 +80,6 @@ class ApacheTest extends TestCase
 
     /**
      * Test.
-     *
-     * @return void
      */
     public function testWithoutRequestUri(): void
     {
