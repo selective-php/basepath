@@ -106,7 +106,7 @@ $app->add(new BasePathMiddleware($app));
 $app->addErrorMiddleware(true, true, true);
 
 // Define app routes
-$app->get('/', static function (Request $request, Response $response) {
+$app->get('/', function (Request $request, Response $response) {
     $response->getBody()->write('Hello, World!');
     return $response;
 })->setName('root');
