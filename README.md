@@ -58,7 +58,7 @@ RewriteRule ^ index.php [QSA,L]
 We also need a rule to "redirect" the sub-directories to 
 the front-controller in `public/index.php`. 
 
-Create a `.htaccess` file above the `public/` directory with this content:
+Create a second `.htaccess` file above the `public/` directory with this content:
 
 ```htaccess
 RewriteEngine on
