@@ -75,7 +75,7 @@ use Selective\BasePath\BasePathDetector;
 
 $basePathDetector = new BasePathDetector($_SERVER);
 
-echo $basePathDetector->getBasePath();
+$basePath = $basePathDetector->getBasePath();
 ```
 
 ### Slim 4 integration
@@ -131,7 +131,7 @@ $url = $routeParser->urlFor('root');
 
 #### Rendering the base path into a Twig layout template
 
-Twig template example:
+This example requires [slim/twig-view](https://github.com/slimphp/Twig-View)
 
 ```twig
 <!DOCTYPE html>
