@@ -97,7 +97,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
 
-// Add middleware
+// Add Slim routing middleware
 $app->addRoutingMiddleware();
 
 // Set the base path to run the app in a subdirectory.
