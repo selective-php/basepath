@@ -125,7 +125,7 @@ $basePath = \Slim\Routing\RouteContext::fromRequest($request)->getBasePath(),
 #### Creating a relative url with the base path
 
 ```php
-$routeParser = \Slim\Routing\RouteContext::fromRequest($request);
+$routeParser = \Slim\Routing\RouteContext::fromRequest($request)->getRouteParser();
 $url = $routeParser->urlFor('root');
 ```
 
