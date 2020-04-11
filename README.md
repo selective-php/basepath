@@ -116,37 +116,32 @@ $app->get('/', function (Request $request, Response $response) {
 $app->run();
 ```
 
-Creating a `relative` url with a base path using the RouteParser:
+#### Retrieving the base path
 
 ```php
-$routeParser = $app->getRouteCollector()->getRouteParser();
-echo $routeParser->urlFor('root');
+$basePath = \Slim\Routing\RouteContext::fromRequest($request)->getBasePath(),
 ```
 
-Passing the base path into all Twig templates using the `App` instance:
+#### Creating a relative url with the base path
 
 ```php
-$environment->addGlobal('base_path', $app->getBasePath() . '/');
+$routeParser = \Slim\Routing\RouteContext::fromRequest($request);
+$url = $routeParser->urlFor('root');
 ```
 
-Passing the base path into all Twig templates using a route:
-
-```php
-$routeParser = $app->getRouteCollector()->getRouteParser();
-$twig->addGlobal('base_path', $routeParser->urlFor('root'));
-```
+#### Rendering the base path into a Twig layout template
 
 Twig template example:
 
-```html
+```twig
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <base href="{{ base_path }}"/>
-    </head>
-    <body>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <base href="{{ base_path() }}/"/>
+</head>
+<body>
+{% block content %}{% endblock %}
+</body>
 </html>
 ```
 
