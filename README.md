@@ -68,16 +68,6 @@ RewriteRule (.*) public/$1 [L]
 
 ## Usage
 
-### Detect the base path
-
-```php
-use Selective\BasePath\BasePathDetector;
-
-$basePathDetector = new BasePathDetector($_SERVER);
-
-$basePath = $basePathDetector->getBasePath();
-```
-
 ### Slim 4 integration
 
 Add the `BasePathMiddleware` after `addRoutingMiddleware()` to set the basePath before 
