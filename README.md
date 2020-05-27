@@ -106,6 +106,27 @@ $app->get('/', function (Request $request, Response $response) {
 $app->run();
 ```
 
+Open your website, e.g. `http://localhost` and you should see the message `Hello, World!`.
+
+## Good URLs
+
+The `public/` directory is only the `DoumentRoot` of your webserver, 
+but it's never part of your base path and the official url.
+
+<span style="color:green">Good URLs:</span>
+
+* `http://www.example.com`
+* `http://www.example.com/users`
+* `http://www.example.com/my-app`
+* `http://www.example.com/my-app/users`
+
+<span style="color:red">Bad URLs:</span>
+ 
+* `http://www.example.com/public`
+* `http://www.example.com/public/users`
+* `http://www.example.com/my-app/public`
+* `http://www.example.com/my-app/public/users`
+
 #### Retrieving the base path
 
 ```php
@@ -135,6 +156,6 @@ This example requires [slim/twig-view](https://github.com/slimphp/Twig-View)
 </html>
 ```
 
-## License
+## Support
 
-* MIT
+* Create issues at <https://github.com/selective-php/basepath/issues>
