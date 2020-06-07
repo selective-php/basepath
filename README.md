@@ -19,8 +19,8 @@ A URL base path detector for Slim 4.
 
 ### Supported servers
 
-* Apache webserver
-* PHP build-in webserver
+* Apache webserver with mod_rewrite and .htaccess
+* PHP build-in webserver 
 
 ## Requirements
 
@@ -158,4 +158,4 @@ This example requires [slim/twig-view](https://github.com/slimphp/Twig-View)
 
 ## Support
 
-* Create issues at <https://github.com/selective-php/basepath/issues>
+Create issues at <https://github.com/selective-php/basepath/issues>
