@@ -67,7 +67,7 @@ class BasePathMiddlewareTest extends TestCase
      *
      * @param string $method The HTTP method
      * @param string|UriInterface $uri The URI
-     * @param array $serverParams The server parameters
+     * @param array<mixed> $serverParams The server parameters contain multiple data types
      *
      * @return ServerRequestInterface
      */

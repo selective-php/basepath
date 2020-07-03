@@ -11,7 +11,7 @@ use Selective\BasePath\BasePathDetector;
 class ApacheTest extends TestCase
 {
     /**
-     * @var array
+     * @var array<mixed> The server data array contains multiple data types
      */
     private $server;
 
