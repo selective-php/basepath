@@ -136,17 +136,17 @@ but it's never part of your base path and the official url.
 
 <span style="color:green">Good URLs:</span>
 
-* `http://www.example.com`
-* `http://www.example.com/users`
-* `http://www.example.com/my-app`
-* `http://www.example.com/my-app/users`
+* `https://www.example.com`
+* `https://www.example.com/users`
+* `https://www.example.com/my-app`
+* `https://www.example.com/my-app/users`
 
 <span style="color:red">Bad URLs:</span>
  
-* `http://www.example.com/public`
-* `http://www.example.com/public/users`
-* `http://www.example.com/my-app/public`
-* `http://www.example.com/my-app/public/users`
+* `https://www.example.com/public`
+* `https://www.example.com/public/users`
+* `https://www.example.com/my-app/public`
+* `https://www.example.com/my-app/public/users`
 
 #### Retrieving the base path
 
