@@ -115,13 +115,19 @@ $app->run();
 
 ## PHP built-in webserver usage
 
-* Open the console and change into the project directory. Then run:
+* Open the console and change into the project `public/` directory. Then run:
 
 ```
-php -S localhost:8080 -t public
+php -S localhost:8000
 ```
 
-* Open `http://localhost:8080` and you should see the message `Hello, World!`.
+If you don't start the webserver from the project `public/` directory, you have start it with a specific document root directory:
+
+```
+php -S localhost:8000 -t public
+```
+
+* Open `http://localhost:8000` and you should see the message `Hello, World!`.
 
 ## Good URLs
 
