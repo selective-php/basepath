@@ -12,7 +12,7 @@ A URL base path detector for Slim 4.
 
 ## Features
 
-* Support for multiple servers
+* Support for Apache and the PHP built-in webserver
 * Tested
 * No dependencies
 * Very fast
@@ -106,7 +106,22 @@ $app->get('/', function (Request $request, Response $response) {
 $app->run();
 ```
 
-Open your website, e.g. `http://localhost` and you should see the message `Hello, World!`.
+
+
+## Apache usage
+
+* Start the apache webserver
+* Open your website, e.g. `http://localhost` or `http://localhost/{my-sub-directory}` and you should see the message `Hello, World!`.
+
+## PHP built-in webserver usage
+
+* Open the console and change into the project directory. Then run:
+
+```
+php -S localhost:8080 -t public
+```
+
+* Open `http://localhost:8080` and you should see the message `Hello, World!`.
 
 ## Good URLs
 
