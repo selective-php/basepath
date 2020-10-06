@@ -106,14 +106,12 @@ $app->get('/', function (Request $request, Response $response) {
 $app->run();
 ```
 
-
-
-## Apache usage
+### Apache usage
 
 * Start the apache webserver
 * Open your website, e.g. `http://localhost` or `http://localhost/{my-sub-directory}` and you should see the message `Hello, World!`.
 
-## PHP built-in webserver usage
+### PHP built-in webserver usage
 
 * Open the console and change into the project `public/` directory. Then run:
 
@@ -129,7 +127,7 @@ php -S localhost:8000 -t public
 
 * Open `http://localhost:8000` and you should see the message `Hello, World!`.
 
-## Good URLs
+### Good URLs
 
 The `public/` directory is only the `DoumentRoot` of your webserver, 
 but it's never part of your base path and the official url.
@@ -148,20 +146,20 @@ but it's never part of your base path and the official url.
 * `https://www.example.com/my-app/public`
 * `https://www.example.com/my-app/public/users`
 
-#### Retrieving the base path
+### Retrieving the base path
 
 ```php
 $basePath = \Slim\Routing\RouteContext::fromRequest($request)->getBasePath(),
 ```
 
-#### Creating a relative url with the base path
+### Creating a relative url with the base path
 
 ```php
 $routeParser = \Slim\Routing\RouteContext::fromRequest($request)->getRouteParser();
 $url = $routeParser->urlFor('root');
 ```
 
-#### Rendering the base path into a Twig layout template
+### Rendering the base path into a Twig layout template
 
 This example requires [slim/twig-view](https://github.com/slimphp/Twig-View)
 
