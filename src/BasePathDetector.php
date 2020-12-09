@@ -8,7 +8,6 @@ namespace Selective\BasePath;
 class BasePathDetector
 {
     /**
-     * @var array<mixed> The server data array contains multiple data types
      * @var array<mixed> The server data
      */
     private $server;
@@ -21,7 +20,6 @@ class BasePathDetector
     /**
      * The constructor.
      *
-     * @param array<mixed> $server The SERVER data to use and contain multiple data types
      * @param array<mixed> $server The SERVER data to use
      * @param string|null $phpSapi The PHP_SAPI value
      */
