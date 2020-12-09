@@ -67,9 +67,9 @@ class BasePathMiddlewareTest extends TestCase
      *
      * @param string $method The HTTP method
      * @param string|UriInterface $uri The URI
-     * @param array $serverParams The server parameters
+     * @param array<mixed> $serverParams The server parameters
      *
-     * @return ServerRequestInterface
+     * @return ServerRequestInterface The request
      */
     private function createRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface
     {

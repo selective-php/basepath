@@ -11,7 +11,7 @@ use Selective\BasePath\BasePathDetector;
 class InternalServerTest extends TestCase
 {
     /**
-     * @var array
+     * @var array<mixed>
      */
     private $server;
 
