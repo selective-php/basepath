@@ -129,7 +129,7 @@ php -S localhost:8000 -t public
 
 ### Good URLs
 
-The `public/` directory is only the `DoumentRoot` of your webserver, 
+The `public/` directory is only the `DocumentRoot` of your webserver, 
 but it's never part of your base path and the official url.
 
 <span style="color:green">Good URLs:</span>
