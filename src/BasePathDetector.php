@@ -34,18 +34,18 @@ class BasePathDetector
      *
      * @return string The base path
      */
-    public function getBasePath(): string
-    {
-        // For apache
-        if ($this->phpSapi === 'apache2handler') {
+    public function getBasePath(): string {
+
+        // According to https://www.php.net/manual/en/function.php-sapi-name.php
+        // For built-in server
+        if ($this->phpSapi === 'cli') {
+            return '';
+        } elseif ($this->phpSapi === 'cli-server') {
+            return $this->getBasePathFromBuiltIn($this->server);
+        } elseif (!is_null($this->phpSapi) && strlen($this->phpSapi) > 0) {
+            // Non builtin-server (apache/nginx/php-fpm/...)
             return $this->getBasePathFromApache($this->server);
         }
-
-        // For built-in server
-        if ($this->phpSapi === 'cli-server') {
-            return $this->getBasePathFromBuiltIn($this->server);
-        }
-
         return '';
     }
 
@@ -83,7 +83,7 @@ class BasePathDetector
 
         $scriptName = $server['SCRIPT_NAME'];
 
-        $basePath = (string)parse_url($server['REQUEST_URI'], PHP_URL_PATH);
+        $basePath = (string) parse_url($server['REQUEST_URI'], PHP_URL_PATH);
         $scriptName = str_replace('\\', '/', dirname(dirname($scriptName)));
 
         if ($scriptName === '/') {
