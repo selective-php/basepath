@@ -34,19 +34,14 @@ class BasePathDetector
      *
      * @return string The base path
      */
-    public function getBasePath(): string {
-
-        // According to https://www.php.net/manual/en/function.php-sapi-name.php
-        // For built-in server
-        if ($this->phpSapi === 'cli') {
-            return '';
-        } elseif ($this->phpSapi === 'cli-server') {
-            return $this->getBasePathFromBuiltIn($this->server);
-        } elseif (!is_null($this->phpSapi) && strlen($this->phpSapi) > 0) {
-            // Non builtin-server (apache/nginx/php-fpm/...)
-            return $this->getBasePathFromApache($this->server);
+    public function getBasePath(): string
+    {
+        // The built-in server
+        if ($this->phpSapi === 'cli-server') {
+            return $this->getBasePathFromScriptName($this->server);
         }
-        return '';
+
+        return $this->getBasePathFromRequestUri($this->server);
     }
 
     /**
@@ -56,7 +51,7 @@ class BasePathDetector
      *
      * @return string The base path
      */
-    private function getBasePathFromBuiltIn(array $server): string
+    private function getBasePathFromScriptName(array $server): string
     {
         $scriptName = $server['SCRIPT_NAME'];
         $basePath = str_replace('\\', '/', dirname($scriptName));
@@ -75,7 +70,7 @@ class BasePathDetector
      *
      * @return string The base path
      */
-    private function getBasePathFromApache(array $server): string
+    private function getBasePathFromRequestUri(array $server): string
     {
         if (!isset($server['REQUEST_URI'])) {
             return '';
@@ -83,7 +78,7 @@ class BasePathDetector
 
         $scriptName = $server['SCRIPT_NAME'];
 
-        $basePath = (string) parse_url($server['REQUEST_URI'], PHP_URL_PATH);
+        $basePath = (string)parse_url($server['REQUEST_URI'], PHP_URL_PATH);
         $scriptName = str_replace('\\', '/', dirname(dirname($scriptName)));
 
         if ($scriptName === '/') {
