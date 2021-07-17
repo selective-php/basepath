@@ -38,10 +38,10 @@ class BasePathDetector
     {
         // The built-in server
         if ($this->phpSapi === 'cli-server') {
-            return $this->getBasePathFromScriptName($this->server);
+            return $this->getBasePathByScriptName($this->server);
         }
 
-        return $this->getBasePathFromRequestUri($this->server);
+        return $this->getBasePathByRequestUri($this->server);
     }
 
     /**
@@ -51,7 +51,7 @@ class BasePathDetector
      *
      * @return string The base path
      */
-    private function getBasePathFromScriptName(array $server): string
+    private function getBasePathByScriptName(array $server): string
     {
         $scriptName = $server['SCRIPT_NAME'];
         $basePath = str_replace('\\', '/', dirname($scriptName));
@@ -70,7 +70,7 @@ class BasePathDetector
      *
      * @return string The base path
      */
-    private function getBasePathFromRequestUri(array $server): string
+    private function getBasePathByRequestUri(array $server): string
     {
         if (!isset($server['REQUEST_URI'])) {
             return '';
