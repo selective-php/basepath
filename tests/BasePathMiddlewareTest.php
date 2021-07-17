@@ -25,9 +25,12 @@ class BasePathMiddlewareTest extends TestCase
 
         $app->add(new BasePathMiddleware($app));
 
-        $app->get('/', function ($request, $response) {
-            return $response;
-        });
+        $app->get(
+            '/',
+            function ($request, $response) {
+                return $response;
+            }
+        );
 
         $app->run();
 
@@ -47,9 +50,12 @@ class BasePathMiddlewareTest extends TestCase
 
         $app->add(new BasePathMiddleware($app, 'apache2handler'));
 
-        $app->get('/foo', function ($request, $response) {
-            return $response;
-        });
+        $app->get(
+            '/foo',
+            function ($request, $response) {
+                return $response;
+            }
+        );
 
         $server = [
             'REQUEST_URI' => '/slim4-hello-world/',

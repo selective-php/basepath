@@ -8,15 +8,14 @@ use Selective\BasePath\BasePathDetector;
 /**
  * Test.
  */
-class NonInternalTest extends TestCase {
-
+class NonInternalTest extends TestCase
+{
     /**
      * @var array<mixed> The server data array contains multiple data types
      */
     private $server;
 
     /**
-     * 
      * @var array<string> non-exhaustive list of possible values for PHP_SAPI
      */
     private $sapis = ['apache2handler', 'cgi', 'cgi-fcgi', 'fpm-fcgi', 'litespeed'];
@@ -24,7 +23,8 @@ class NonInternalTest extends TestCase {
     /**
      * Set Up.
      */
-    protected function setUp(): void {
+    protected function setUp(): void
+    {
         $this->server = [
             'REQUEST_METHOD' => 'GET',
             'REQUEST_SCHEME' => 'http',
@@ -41,16 +41,20 @@ class NonInternalTest extends TestCase {
     /**
      * Create instance.
      *
+     * @param ?string $sapi
+     *
      * @return BasePathDetector The detector
      */
-    private function createInstance(?string $sapi): BasePathDetector {
+    private function createInstance(?string $sapi): BasePathDetector
+    {
         return new BasePathDetector($this->server, $sapi);
     }
 
     /**
      * Test.
      */
-    public function testDefault(): void {
+    public function testDefault(): void
+    {
         foreach ($this->sapis as $sapi) {
             $detector = $this->createInstance($sapi);
             $basePath = $detector->getBasePath();
@@ -62,7 +66,8 @@ class NonInternalTest extends TestCase {
     /**
      * Test.
      */
-    public function testUnknownServer(): void {
+    public function testUnknownServer(): void
+    {
         $detector = new BasePathDetector($this->server, '');
         $basePath = $detector->getBasePath();
 
@@ -72,7 +77,8 @@ class NonInternalTest extends TestCase {
     /**
      * Test.
      */
-    public function testSubdirectory(): void {
+    public function testSubdirectory(): void
+    {
         $this->server['REQUEST_URI'] = '/public';
 
         foreach ($this->sapis as $sapi) {
@@ -86,7 +92,8 @@ class NonInternalTest extends TestCase {
     /**
      * Test.
      */
-    public function testWithoutRequestUri(): void {
+    public function testWithoutRequestUri(): void
+    {
         unset($this->server['REQUEST_URI']);
         foreach ($this->sapis as $sapi) {
             $detector = $this->createInstance($sapi);
@@ -95,5 +102,4 @@ class NonInternalTest extends TestCase {
             static::assertSame('', $basePath);
         }
     }
-
 }
