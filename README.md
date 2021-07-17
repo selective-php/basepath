@@ -149,7 +149,7 @@ but it's never part of your base path and the official url.
 ### Retrieving the base path
 
 ```php
-$basePath = \Slim\Routing\RouteContext::fromRequest($request)->getBasePath(),
+$basePath = \Slim\Routing\RouteContext::fromRequest($request)->getBasePath();
 ```
 
 ### Creating a relative url with the base path
