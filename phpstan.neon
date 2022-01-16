@@ -1,8 +1,6 @@
 parameters:
-	level: max
-	paths:
-		- src
-		- tests
-	ignoreErrors:
-		- '#Parameter \#1 \$path of function dirname expects string, mixed given#'
-		- '#Parameter \#1 \$url of function parse_url expects string, mixed given#'
+    level: 8
+    checkMissingIterableValueType: false
+    paths:
+        - src
+        - tests

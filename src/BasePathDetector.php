@@ -8,7 +8,7 @@ namespace Selective\BasePath;
 class BasePathDetector
 {
     /**
-     * @var array<mixed> The server data
+     * @var array The server data
      */
     private $server;
 
@@ -20,7 +20,7 @@ class BasePathDetector
     /**
      * The constructor.
      *
-     * @param array<mixed> $server The SERVER data to use
+     * @param array $server The SERVER data to use
      * @param string|null $phpSapi The PHP_SAPI value
      */
     public function __construct(array $server, string $phpSapi = null)
@@ -47,13 +47,13 @@ class BasePathDetector
     /**
      * Return basePath for built-in server.
      *
-     * @param array<mixed> $server The SERVER data to use
+     * @param array $server The SERVER data to use
      *
      * @return string The base path
      */
     private function getBasePathByScriptName(array $server): string
     {
-        $scriptName = $server['SCRIPT_NAME'];
+        $scriptName = (string)$server['SCRIPT_NAME'];
         $basePath = str_replace('\\', '/', dirname($scriptName));
 
         if (strlen($basePath) > 1) {
@@ -66,7 +66,7 @@ class BasePathDetector
     /**
      * Return basePath for apache server.
      *
-     * @param array<mixed> $server The SERVER data to use
+     * @param array $server The SERVER data to use
      *
      * @return string The base path
      */
@@ -79,14 +79,14 @@ class BasePathDetector
         $scriptName = $server['SCRIPT_NAME'];
 
         $basePath = (string)parse_url($server['REQUEST_URI'], PHP_URL_PATH);
-        $scriptName = str_replace('\\', '/', dirname(dirname($scriptName)));
+        $scriptName = str_replace('\\', '/', dirname($scriptName, 2));
 
         if ($scriptName === '/') {
             return '';
         }
 
         $length = strlen($scriptName);
-        if ($length > 0 && $scriptName !== '/') {
+        if ($length > 0) {
             $basePath = substr($basePath, 0, $length);
         }
 
