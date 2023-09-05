@@ -12,7 +12,7 @@ A URL base path detector for Slim 4.
 
 ## Features
 
-* Support for Apache and the PHP built-in webserver
+* Support for Apache, Nginx and the PHP built-in webserver
 * Tested
 * No dependencies
 * Very fast
@@ -64,6 +64,16 @@ Create a second `.htaccess` file above the `public/` directory with this content
 RewriteEngine on
 RewriteRule ^$ public/ [L]
 RewriteRule (.*) public/$1 [L]
+```
+
+For **Nginx** we need to edit the Nginx configuration and it can redirect the web traffic to the front controller:
+
+```conf
+root /path/to/public;
+
+location / {
+    try_files $uri $uri/ /index.php?$query_string;
+}
 ```
 
 ## Usage
