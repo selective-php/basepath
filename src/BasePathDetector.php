@@ -8,7 +8,7 @@ namespace Selective\BasePath;
 class BasePathDetector
 {
     /**
-     * @var array The server data
+     * @var array<mixed> The server data
      */
     private $server;
 
@@ -20,7 +20,7 @@ class BasePathDetector
     /**
      * The constructor.
      *
-     * @param array $server The SERVER data to use
+     * @param array<mixed> $server The SERVER data to use
      * @param string|null $phpSapi The PHP_SAPI value
      */
     public function __construct(array $server, string $phpSapi = null)
@@ -47,7 +47,7 @@ class BasePathDetector
     /**
      * Return basePath for built-in server.
      *
-     * @param array $server The SERVER data to use
+     * @param array<mixed> $server The SERVER data to use
      *
      * @return string The base path
      */
@@ -66,7 +66,7 @@ class BasePathDetector
     /**
      * Return basePath for apache server.
      *
-     * @param array $server The SERVER data to use
+     * @param array<mixed> $server The SERVER data to use
      *
      * @return string The base path
      */

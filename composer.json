@@ -1,43 +1,25 @@
 {
     "name": "selective/basepath",
-    "type": "library",
     "description": "A URL base path detector for Slim 4",
+    "license": "MIT",
+    "type": "library",
     "keywords": [
         "basepath",
         "slim",
         "slim4"
     ],
     "homepage": "https://github.com/selective-php/basepath",
-    "license": "MIT",
     "require": {
-        "php": "^7.2 || ^8.0",
+        "php": "^8.1",
         "psr/http-server-middleware": "^1"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3",
-        "overtrue/phplint": "^2",
         "phpstan/phpstan": "^1",
-        "phpunit/phpunit": "^8 || ^9",
-        "slim/slim": "^4",
+        "phpunit/phpunit": "^10",
         "slim/psr7": "^1",
+        "slim/slim": "^4",
         "squizlabs/php_codesniffer": "^3"
-    },
-    "scripts": {
-        "check": [
-            "@lint",
-            "@cs:check",
-            "@sniffer:check",
-            "@phpstan",
-            "@test:coverage"
-        ],
-        "cs:check": "php-cs-fixer fix --dry-run --format=txt --verbose --diff --config=.cs.php",
-        "cs:fix": "php-cs-fixer fix --config=.cs.php",
-        "lint": "phplint ./ --exclude=vendor --no-interaction --no-cache",
-        "phpstan": "phpstan analyse -c phpstan.neon --no-progress --ansi",
-        "sniffer:check": "phpcs --standard=phpcs.xml",
-        "sniffer:fix": "phpcbf --standard=phpcs.xml",
-        "test": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always",
-        "test:coverage": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always --coverage-clover build/logs/clover.xml --coverage-html build/coverage"
     },
     "autoload": {
         "psr-4": {
@@ -50,7 +32,28 @@
         }
     },
     "config": {
-        "sort-packages": true,
-        "process-timeout": 0
+        "process-timeout": 0,
+        "sort-packages": true
+    },
+    "scripts": {
+        "cs:check": [
+            "@putenv PHP_CS_FIXER_IGNORE_ENV=1",
+            "php-cs-fixer fix --dry-run --format=txt --verbose --diff --config=.cs.php --ansi"
+        ],
+        "cs:fix": [
+            "@putenv PHP_CS_FIXER_IGNORE_ENV=1",
+            "php-cs-fixer fix --config=.cs.php --ansi --verbose"
+        ],
+        "sniffer:check": "phpcs --standard=phpcs.xml",
+        "sniffer:fix": "phpcbf --standard=phpcs.xml",
+        "stan": "phpstan analyse -c phpstan.neon --no-progress --ansi",
+        "test": "phpunit --configuration phpunit.xml --do-not-cache-result --colors=always",
+        "test:all": [
+            "@cs:check",
+            "@sniffer:check",
+            "@stan",
+            "@test"
+        ],
+        "test:coverage": "php -d xdebug.mode=coverage -r \"require 'vendor/bin/phpunit';\" -- --configuration phpunit.xml --do-not-cache-result --colors=always --coverage-clover build/logs/clover.xml --coverage-html build/coverage"
     }
 }
