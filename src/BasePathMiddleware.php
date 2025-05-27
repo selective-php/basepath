@@ -2,6 +2,7 @@
 
 namespace Selective\BasePath;
 
+use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -14,19 +15,19 @@ use Slim\App;
 final class BasePathMiddleware implements MiddlewareInterface
 {
     /**
-     * @var App The slim app
+     * @var App<ContainerInterface> The slim app
      */
-    private $app;
+    private App $app;
 
     /**
      * @var string|null
      */
-    private $phpSapi;
+    private ?string $phpSapi;
 
     /**
      * The constructor.
      *
-     * @param App $app The slim app
+     * @param App<ContainerInterface> $app The slim app
      * @param string|null $phpSapi The PHP_SAPI value
      */
     public function __construct(App $app, ?string $phpSapi = null)
