@@ -23,7 +23,7 @@ class BasePathDetector
      * @param array<mixed> $server The SERVER data to use
      * @param string|null $phpSapi The PHP_SAPI value
      */
-    public function __construct(array $server, string $phpSapi = null)
+    public function __construct(array $server, ?string $phpSapi = null)
     {
         $this->server = $server;
         $this->phpSapi = $phpSapi ?? PHP_SAPI;
