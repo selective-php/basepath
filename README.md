@@ -22,7 +22,7 @@ A URL base path detector for Slim 4.
 
 ## Requirements
 
-* PHP 8.2+
+* PHP 8.2 - 8.4
 
 ## Installation
 
