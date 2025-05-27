@@ -20,7 +20,6 @@
 /.gitattributes     export-ignore
 /.gitignore         export-ignore
 /.travis.*          export-ignore
-/.scrutinizer.*     export-ignore
 /.editorconfig      export-ignore
 /.coveralls.*       export-ignore
 
