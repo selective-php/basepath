@@ -20,7 +20,6 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: mbstring, intl, zip
-          coverage: none
 
       - name: Check PHP Version
         run: php -v
@@ -50,10 +49,3 @@ jobs:
       - name: Run tests with coverage
         if: ${{ matrix.php-versions == '8.4' }}
         run: composer test:coverage
-
-      - name: Upload coverage
-        if: ${{ matrix.php-versions == '8.4' }}
-        uses: coverallsapp/github-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          file: build/coverage/clover.xml
